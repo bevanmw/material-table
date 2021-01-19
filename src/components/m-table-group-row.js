@@ -21,90 +21,89 @@ export default class MTableGroupRow extends React.Component {
 
     let detail;
 
-      if (this.props.groups.length > this.props.level + 1) {
-        // Is there another group
-        detail = this.props.groupData.groups.map((groupData, index) => (
-          <this.props.components.GroupRow
-            actions={this.props.actions}
-            key={groupData.value || "" + index}
-            columns={this.props.columns}
-            components={this.props.components}
-            detailPanel={this.props.detailPanel}
-            getFieldValue={this.props.getFieldValue}
-            groupData={groupData}
-            groups={this.props.groups}
-            icons={this.props.icons}
-            level={this.props.level + 1}
-            path={[...this.props.path, index]}
-            onGroupExpandChanged={this.props.onGroupExpandChanged}
-            onRowSelected={this.props.onRowSelected}
-            onRowClick={this.props.onRowClick}
-            onToggleDetailPanel={this.props.onToggleDetailPanel}
-            onTreeExpandChanged={this.props.onTreeExpandChanged}
-            onEditingCanceled={this.props.onEditingCanceled}
-            onEditingApproved={this.props.onEditingApproved}
-            options={this.props.options}
-            hasAnyEditingRow={this.props.hasAnyEditingRow}
-            isTreeData={this.props.isTreeData}
-            cellEditable={this.props.cellEditable}
-            onCellEditStarted={this.props.onCellEditStarted}
-            onCellEditFinished={this.props.onCellEditFinished}
-            scrollWidth={this.props.scrollWidth}
-          />
-        ));
-      } else {
-        detail = this.props.groupData.data.map((rowData, index) => {
-          if (rowData.tableData.editing) {
-            return (
-              <this.props.components.EditRow
-                columns={this.props.columns}
-                components={this.props.components}
-                data={rowData}
-                icons={this.props.icons}
-                path={[...this.props.path, index]}
-                localization={this.props.localization}
-                key={index}
-                mode={rowData.tableData.editing}
-                options={this.props.options}
-                isTreeData={this.props.isTreeData}
-                detailPanel={this.props.detailPanel}
-                onEditingCanceled={this.props.onEditingCanceled}
-                onEditingApproved={this.props.onEditingApproved}
-                getFieldValue={this.props.getFieldValue}
-                onBulkEditRowChanged={this.props.onBulkEditRowChanged}
-                scrollWidth={this.props.scrollWidth}
-              />
-            );
-          } else {
-            return (
-              <this.props.components.Row
-                actions={this.props.actions}
-                key={index}
-                columns={this.props.columns}
-                components={this.props.components}
-                data={rowData}
-                detailPanel={this.props.detailPanel}
-                getFieldValue={this.props.getFieldValue}
-                icons={this.props.icons}
-                path={[...this.props.path, index]}
-                onRowSelected={this.props.onRowSelected}
-                onRowClick={this.props.onRowClick}
-                onToggleDetailPanel={this.props.onToggleDetailPanel}
-                options={this.props.options}
-                isTreeData={this.props.isTreeData}
-                onTreeExpandChanged={this.props.onTreeExpandChanged}
-                onEditingCanceled={this.props.onEditingCanceled}
-                onEditingApproved={this.props.onEditingApproved}
-                hasAnyEditingRow={this.props.hasAnyEditingRow}
-                cellEditable={this.props.cellEditable}
-                onCellEditStarted={this.props.onCellEditStarted}
-                onCellEditFinished={this.props.onCellEditFinished}
-                scrollWidth={this.props.scrollWidth}
-              />
-            );
-          }
-        });
-      }
+    if (this.props.groups.length > this.props.level + 1) {
+      // Is there another group
+      detail = this.props.groupData.groups.map((groupData, index) => (
+        <this.props.components.GroupRow
+          actions={this.props.actions}
+          key={groupData.value || "" + index}
+          columns={this.props.columns}
+          components={this.props.components}
+          detailPanel={this.props.detailPanel}
+          getFieldValue={this.props.getFieldValue}
+          groupData={groupData}
+          groups={this.props.groups}
+          icons={this.props.icons}
+          level={this.props.level + 1}
+          path={[...this.props.path, index]}
+          onGroupExpandChanged={this.props.onGroupExpandChanged}
+          onRowSelected={this.props.onRowSelected}
+          onRowClick={this.props.onRowClick}
+          onToggleDetailPanel={this.props.onToggleDetailPanel}
+          onTreeExpandChanged={this.props.onTreeExpandChanged}
+          onEditingCanceled={this.props.onEditingCanceled}
+          onEditingApproved={this.props.onEditingApproved}
+          options={this.props.options}
+          hasAnyEditingRow={this.props.hasAnyEditingRow}
+          isTreeData={this.props.isTreeData}
+          cellEditable={this.props.cellEditable}
+          onCellEditStarted={this.props.onCellEditStarted}
+          onCellEditFinished={this.props.onCellEditFinished}
+          scrollWidth={this.props.scrollWidth}
+        />
+      ));
+    } else {
+      detail = this.props.groupData.data.map((rowData, index) => {
+        if (rowData.tableData.editing) {
+          return (
+            <this.props.components.EditRow
+              columns={this.props.columns}
+              components={this.props.components}
+              data={rowData}
+              icons={this.props.icons}
+              path={[...this.props.path, index]}
+              localization={this.props.localization}
+              key={index}
+              mode={rowData.tableData.editing}
+              options={this.props.options}
+              isTreeData={this.props.isTreeData}
+              detailPanel={this.props.detailPanel}
+              onEditingCanceled={this.props.onEditingCanceled}
+              onEditingApproved={this.props.onEditingApproved}
+              getFieldValue={this.props.getFieldValue}
+              onBulkEditRowChanged={this.props.onBulkEditRowChanged}
+              scrollWidth={this.props.scrollWidth}
+            />
+          );
+        } else {
+          return (
+            <this.props.components.Row
+              actions={this.props.actions}
+              key={index}
+              columns={this.props.columns}
+              components={this.props.components}
+              data={rowData}
+              detailPanel={this.props.detailPanel}
+              getFieldValue={this.props.getFieldValue}
+              icons={this.props.icons}
+              path={[...this.props.path, index]}
+              onRowSelected={this.props.onRowSelected}
+              onRowClick={this.props.onRowClick}
+              onToggleDetailPanel={this.props.onToggleDetailPanel}
+              options={this.props.options}
+              isTreeData={this.props.isTreeData}
+              onTreeExpandChanged={this.props.onTreeExpandChanged}
+              onEditingCanceled={this.props.onEditingCanceled}
+              onEditingApproved={this.props.onEditingApproved}
+              hasAnyEditingRow={this.props.hasAnyEditingRow}
+              cellEditable={this.props.cellEditable}
+              onCellEditStarted={this.props.onCellEditStarted}
+              onCellEditFinished={this.props.onCellEditFinished}
+              scrollWidth={this.props.scrollWidth}
+            />
+          );
+        }
+      });
     }
 
     const freeCells = [];
@@ -140,17 +139,21 @@ export default class MTableGroupRow extends React.Component {
             <IconButton
               style={{
                 transition: "all ease 200ms",
-                ...this.rotateIconStyle(this.props.groupData.isExpanded, !!this.props.icons.DetailPanelOpen),
+                ...this.rotateIconStyle(
+                  this.props.groupData.isExpanded,
+                  !!this.props.icons.DetailPanelOpen
+                ),
               }}
               onClick={(event) => {
                 this.props.onGroupExpandChanged(this.props.path);
               }}
             >
-              {
-                this.props.groupData.isExpanded && this.props.icons.DetailPanelOpen ? 
-                  <this.props.icons.DetailPanelOpen /> : 
-                  <this.props.icons.DetailPanel />
-              }
+              {this.props.groupData.isExpanded &&
+              this.props.icons.DetailPanelOpen ? (
+                <this.props.icons.DetailPanelOpen />
+              ) : (
+                <this.props.icons.DetailPanel />
+              )}
             </IconButton>
             <b>
               {title}
