@@ -7,8 +7,8 @@ import * as React from "react";
 /* eslint-enable no-unused-vars */
 
 export default class MTableGroupRow extends React.Component {
-  rotateIconStyle = (isOpen) => ({
-    transform: isOpen ? "rotate(90deg)" : "none",
+  rotateIconStyle = (isOpen, hasOpenIcon) => ({
+    transform: isOpen && !hasOpenIcon ? "rotate(90deg)" : "none",
   });
 
   render() {
@@ -20,7 +20,7 @@ export default class MTableGroupRow extends React.Component {
     const column = this.props.groups[this.props.level];
 
     let detail;
-    if (this.props.groupData.isExpanded) {
+
       if (this.props.groups.length > this.props.level + 1) {
         // Is there another group
         detail = this.props.groupData.groups.map((groupData, index) => (
@@ -140,13 +140,17 @@ export default class MTableGroupRow extends React.Component {
             <IconButton
               style={{
                 transition: "all ease 200ms",
-                ...this.rotateIconStyle(this.props.groupData.isExpanded),
+                ...this.rotateIconStyle(this.props.groupData.isExpanded, !!this.props.icons.DetailPanelOpen),
               }}
               onClick={(event) => {
                 this.props.onGroupExpandChanged(this.props.path);
               }}
             >
-              <this.props.icons.DetailPanel />
+              {
+                this.props.groupData.isExpanded && this.props.icons.DetailPanelOpen ? 
+                  <this.props.icons.DetailPanelOpen /> : 
+                  <this.props.icons.DetailPanel />
+              }
             </IconButton>
             <b>
               {title}
